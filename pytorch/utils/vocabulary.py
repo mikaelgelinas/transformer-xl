@@ -85,7 +85,9 @@ class Vocab(object):
             for sym, cnt in self.counter.most_common(self.max_size):
                 if cnt < self.min_freq: break
                 self.add_symbol(sym)
-
+            
+            self.add_symbol('<UNK>')
+            self.unk_idx = self.sym2idx['<UNK>']        
             print('final vocab size {} from {} unique tokens'.format(
                 len(self), len(self.counter)))
 
